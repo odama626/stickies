@@ -1,4 +1,4 @@
-## Public, live sticky notes built with 
+## Public, live sticky notes
 
 ### 3rd party sources on Client
 - Roboto Font
