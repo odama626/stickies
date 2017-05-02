@@ -68,6 +68,27 @@ $c_code: rgba(27,31,35,0.05);
       margin-left: -1.5em;
     }
   }
+  .check-box.slick {
+
+    input[type='checkbox'] {
+      opacity: 0.5;
+      height: 0;
+
+      &:before {
+        border: 2px solid;
+
+        width: 10px;
+        height: 10px;
+        margin-top: -0.6em;
+        position: absolute;
+      }
+      &:checked:before {
+        content: '\2713';
+        line-height: 0.4em;
+        font-size: 1.5em;
+      }
+    }
+  }
 
   table {
     border-collapse: collapse;
