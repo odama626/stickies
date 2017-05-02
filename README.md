@@ -1,41 +1,14 @@
-## A simple https file server written in Node
+## Public, live sticky notes built with 
 
-### Simple setup
-By default, certs from [letsEncrypt](https://letsencrypt.org/) with [Certbot](https://certbot.eff.org/) are expected.
+### 3rd party sources on Client
+- Roboto Font
+- Material Icons
+- [GunDB](http://gun.js.org/)
+- [ReactJS](https://facebook.github.io/react/)
+- [Marked](https://github.com/chjj/marked) markdown parser
 
-To get your certificates setup for your domain:
-
-install certbot
-```
-  #Install in ubuntu
-  add-apt-repository ppa:certbot/certbot
-  apt-get update
-  apt-get install certbot
-```
-
-run certbot in standalone mode, where { Your Domain Name } is your domain name
-```
-  certbot certonly --standalone -d { Your Domain Name }
-```
-
-use git to download this package
-```
-  git clone https://github.com/omarzion/BasicNodeHttpsFileServer.git
-```
-
-cd into directory and install
-```
-  cd BasicNodeHttpsFileServer/
-  npm install
-```
-
-In cert.js, change myUrl to your domain name
-
-In app.js, change port to whatever port you want (default is 8080)
-
-start with 
-```
-  node app.js
-```
-
-put all the files you want to statically serve in the files folder
+### 3rd party sources on Server
+- [Node](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [Pug](https://pugjs.org/)
+- [GunDB](http://gun.js.org/)
