@@ -244,7 +244,7 @@ class CreateNoteBar extends React.Component {
 
 	toggleEntry(prevState, props) {
 		if (prevState.entry) {
-			console.log((this.state.body || this.state.title));
+			//console.log((this.state.body || this.state.title));
 			if (this.state.body || this.state.title) {
 				dataset.AddNote({
 					type: 'note',
@@ -275,6 +275,12 @@ class CreateNoteBar extends React.Component {
 		});
 	}
 
+	onButtonAction(state, text) {
+		if (text == 'close') {
+			this.setState(this.toggleEntry);
+		}
+	}
+
 	renderEntry() {
 		return React.createElement('div', {
 				className: 'CreateNoteBar entry',
@@ -282,7 +288,7 @@ class CreateNoteBar extends React.Component {
 			},
 			React.createElement(NoteBody, { edit: true, className: 'title', listener: text => this.updateText('title', text), placeholder: 'Title'}),
 			React.createElement(NoteBody, { edit: true, className: 'body', listener: text => this.updateText('body', text), placeholder: 'Take a note...'}),
-			React.createElement(NoteToolbar, { popout: this.state.entry})
+			React.createElement(NoteToolbar, { popout: this.state.entry, action: (state, text) => this.onButtonAction(state, text, this)})
 		);
 	}
 
