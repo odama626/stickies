@@ -110,7 +110,8 @@ class Button extends React.Component {
 				if (this.props.action) {
 					this.props.action(e, this.props.name || this.props.icon);
 				}
-			}
+			},
+			name: this.props.name
 		}, this.props.icon);
 	}
 }
@@ -119,8 +120,8 @@ class NoteToolbar extends React.Component {
 	render() {
 		if (this.props.popout) {
 			return React.createElement('div', { className: 'Toolbar', onClick: e => e.stopPropagation()},
-				React.createElement(Button, { action: this.props.action, icon: 'close'}),
-				React.createElement(Button, { action: this.props.action, icon: 'color_lens'})/*,
+				React.createElement(Button, { action: this.props.action, name: 'close', icon: 'close'}),
+				React.createElement(Button, { action: this.props.action, name: 'color', icon: 'color_lens'})/*,
 				React.createElement(Button, { icon: 'photo'}),
 				React.createElement(Button, { icon: 'person_add'})
 			*/);
@@ -144,8 +145,7 @@ class Note extends React.Component {
 		console.log(`${name} fired ${event}`);
 
 		switch(name) {
-			case 'color_lens':
-
+			case 'color':
 				break;
 			default:
 				this.setState(this.open);
@@ -172,6 +172,14 @@ class Note extends React.Component {
 			return true;
 		} else {
 			return (JSON.stringify(nextProps) != JSON.stringify(this.props));
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.popout) {
+			let colorButton = document.querySelector('i[name="color"]');
+			console.log(colorButton);
+			new jscolor(colorButton);
 		}
 	}
 
