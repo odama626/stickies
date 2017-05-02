@@ -1,0 +1,18 @@
+{
+  "name": "sticky",
+  "version": "1.0.0",
+  "description": "Opensource sticky notes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Sparks",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.15.2",
+    "gun": "^0.7.4",
+    "gun-server": "^1.0.0",
+    "https": "^1.0.0"
+  }
+}

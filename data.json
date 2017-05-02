@@ -1,0 +1,356 @@
+{
+  "graph": {
+    "6hLKID9Bh2O0dMtkKaXu49za": {
+      "_": {
+        "#": "6hLKID9Bh2O0dMtkKaXu49za",
+        ">": {
+          "title": 1493515361053.93,
+          "body": 1493515142226.18
+        }
+      },
+      "title": "What tge fuck",
+      "body": "Are you kidding me?"
+    },
+    "notes": {
+      "2": {
+        "#": "6hLKID9Bh2O0dMtkKaXu49za"
+      },
+      "3": {
+        "#": "vdep9TF6yerTdsxCafL4wPE5"
+      },
+      "_": {
+        "#": "notes",
+        ">": {
+          "2": 1493515361053.93,
+          "3": 1493515165967.49
+        }
+      }
+    },
+    "vdep9TF6yerTdsxCafL4wPE5": {
+      "_": {
+        "#": "vdep9TF6yerTdsxCafL4wPE5",
+        ">": {
+          "title": 1493515165967.49
+        }
+      },
+      "title": "What the actual fuck"
+    },
+    "K9iTq5Xt8o5Xebp96cqsv8FR": {
+      "_": {
+        "#": "K9iTq5Xt8o5Xebp96cqsv8FR",
+        ">": {
+          "type": 1493515510250.215,
+          "title": 1493515538736.74,
+          "body": 1493516684013.95,
+          "key": 1493515510250.215,
+          "id": 1493515510250.215
+        }
+      },
+      "type": "note",
+      "title": "Finally",
+      "body": "Woooooooo",
+      "key": 4,
+      "id": 4
+    },
+    "random/shit": {
+      "4": {
+        "#": "K9iTq5Xt8o5Xebp96cqsv8FR"
+      },
+      "5": {
+        "#": "qgiHghVLvPS84J0qVdTluGyr"
+      },
+      "6": {
+        "#": "1aJ9Za4aL30KAQ7nLbgwpJDx"
+      },
+      "_": {
+        "#": "random/shit",
+        ">": {
+          "4": 1493516684013.95,
+          "5": 1493517323273.095,
+          "6": 1493517307462.72
+        }
+      }
+    },
+    "nextKey": {
+      "_": {
+        "#": "nextKey",
+        ">": {
+          "nextKey": 1493544345954.57
+        }
+      },
+      "nextKey": 27
+    },
+    "qgiHghVLvPS84J0qVdTluGyr": {
+      "_": {
+        "#": "qgiHghVLvPS84J0qVdTluGyr",
+        ">": {
+          "type": 1493516117991.755,
+          "title": 1493516117991.755,
+          "body": 1493517323273.095,
+          "key": 1493516117991.755,
+          "id": 1493516117991.755
+        }
+      },
+      "type": "note",
+      "title": "Hello",
+      "body": ":|",
+      "key": 5,
+      "id": 5
+    },
+    "1aJ9Za4aL30KAQ7nLbgwpJDx": {
+      "_": {
+        "#": "1aJ9Za4aL30KAQ7nLbgwpJDx",
+        ">": {
+          "type": 1493517307462.72,
+          "title": 1493517307462.72,
+          "body": 1493517307462.72,
+          "key": 1493517307462.72,
+          "id": 1493517307462.72
+        }
+      },
+      "type": "note",
+      "title": "Sticky notes",
+      "body": "Cool",
+      "key": 6,
+      "id": 6
+    },
+    "cLoliUs0whZKPfMOLqVt0Ay9": {
+      "_": {
+        "#": "cLoliUs0whZKPfMOLqVt0Ay9",
+        ">": {
+          "type": 1493517798849.31,
+          "title": 1493534066133.67,
+          "body": 1493570453931.905,
+          "key": 1493517798849.31,
+          "id": 1493517798849.31
+        }
+      },
+      "type": "note",
+      "title": "Yes!",
+      "body": "\n\n",
+      "key": 8,
+      "id": 8
+    },
+    "random/stuff": {
+      "8": {
+        "#": "cLoliUs0whZKPfMOLqVt0Ay9"
+      },
+      "9": {
+        "#": "Em2q7BnrdDvLnF5Snp6aSgoE"
+      },
+      "12": {
+        "#": "Aqay3MhtVcGCXqUx4g3ogT9w"
+      },
+      "13": {
+        "#": "2tzFcTBp4oV8LTwt7MUSsImT"
+      },
+      "14": {
+        "#": "Fn4likQlWUAxUl59TtfFfJRj"
+      },
+      "15": {
+        "#": "0yRAGdR8NlJMZd7Kaa7SzMnG"
+      },
+      "19": {
+        "#": "gfArT5RHBwaHSLBUDJ8nXbEE"
+      },
+      "20": {
+        "#": "K4RfqvP79yKn8bjAyEbNIrCl"
+      },
+      "21": {
+        "#": "RNp59UZDoo6DrzsBQKF9mF8s"
+      },
+      "25": {
+        "#": "07R1H6uPbvbMq09smIcsE4HL"
+      },
+      "26": {
+        "#": "MnUABSta2ezz7c2PypDEZbzz"
+      },
+      "_": {
+        "#": "random/stuff",
+        ">": {
+          "8": 1493570453931.905,
+          "9": 1493570320798.585,
+          "12": 1493653184576.62,
+          "13": 1493653159418.005,
+          "14": 1493542442323.495,
+          "15": 1493552293786.425,
+          "19": 1493660578934.45,
+          "20": 1493545383111.41,
+          "21": 1493547873625.5,
+          "25": 1493548188734.095,
+          "26": 1493570216406.27
+        }
+      }
+    },
+    "Em2q7BnrdDvLnF5Snp6aSgoE": {
+      "_": {
+        "#": "Em2q7BnrdDvLnF5Snp6aSgoE",
+        ">": {
+          "type": 1493517807043.79,
+          "title": 1493538315618.255,
+          "body": 1493570320798.585,
+          "key": 1493517807043.79,
+          "id": 1493517807043.79
+        }
+      },
+      "type": "note",
+      "title": "## Todo",
+      "body": "- [x] Intercept key inputs to properly handles new lines\n- [x] Add Markdown support\n- [x] we need checkboxes!\n- [x] Live update clients, lets watch people \n- [x] Media Queries\n- [ ] Implement Color palette button\n- [x] Add #tagging system\n",
+      "key": 9,
+      "id": 9
+    },
+    "Aqay3MhtVcGCXqUx4g3ogT9w": {
+      "_": {
+        "#": "Aqay3MhtVcGCXqUx4g3ogT9w",
+        ">": {
+          "type": 1493524797481.98,
+          "title": 1493538187581.02,
+          "body": 1493653184576.62,
+          "key": 1493524797481.98,
+          "id": 1493524797481.98
+        }
+      },
+      "type": "note",
+      "title": "Sticky Notes",
+      "body": "*Markdown works*",
+      "key": 12,
+      "id": 12
+    },
+    "2tzFcTBp4oV8LTwt7MUSsImT": {
+      "_": {
+        "#": "2tzFcTBp4oV8LTwt7MUSsImT",
+        ">": {
+          "type": 1493539671934.785,
+          "title": 1493539671934.785,
+          "body": 1493653159418.005,
+          "key": 1493539671934.785,
+          "id": 1493539671934.785
+        }
+      },
+      "type": "note",
+      "title": "Hello",
+      "body": "\n\nWoo, you can see me type\n",
+      "key": 13,
+      "id": 13
+    },
+    "Fn4likQlWUAxUl59TtfFfJRj": {
+      "_": {
+        "#": "Fn4likQlWUAxUl59TtfFfJRj",
+        ">": {
+          "type": 1493540490297.09,
+          "title": 1493540490297.09,
+          "body": 1493542442323.495,
+          "key": 1493540490297.09,
+          "id": 1493540490297.09
+        }
+      },
+      "type": "note",
+      "title": "Blargh",
+      "body": "A new Sticky\n\n1. One\n2. Two\n3. Three\n4. Four\n",
+      "key": 14,
+      "id": 14
+    },
+    "0yRAGdR8NlJMZd7Kaa7SzMnG": {
+      "_": {
+        "#": "0yRAGdR8NlJMZd7Kaa7SzMnG",
+        ">": {
+          "type": 1493540680783.07,
+          "title": 1493552293786.425,
+          "body": 1493548860329.94,
+          "key": 1493540680783.07,
+          "id": 1493540680783.07
+        }
+      },
+      "type": "note",
+      "title": "[alt-J](https://www.youtube.com/user/Altjband) (∆) Breezeblocks",
+      "body": "[![alt-J (∆) Breezeblocks](https://img.youtube.com/vi/rVeMiVU77wo/0.jpg)](https://www.youtube.com/watch?v=rVeMiVU77wo)",
+      "key": 15,
+      "id": 15
+    },
+    "gfArT5RHBwaHSLBUDJ8nXbEE": {
+      "_": {
+        "#": "gfArT5RHBwaHSLBUDJ8nXbEE",
+        ">": {
+          "type": 1493544029346.92,
+          "title": 1493660572638.805,
+          "body": 1493660578934.45,
+          "key": 1493544029346.92,
+          "id": 1493544029346.92
+        }
+      },
+      "type": "note",
+      "title": "",
+      "body": "You picked a fine time to leave me Lucile...",
+      "key": 19,
+      "id": 19
+    },
+    "K4RfqvP79yKn8bjAyEbNIrCl": {
+      "_": {
+        "#": "K4RfqvP79yKn8bjAyEbNIrCl",
+        ">": {
+          "type": 1493544097047.885,
+          "title": 1493545383111.41,
+          "body": 1493545280450.35,
+          "key": 1493544097047.885,
+          "id": 1493544097047.885
+        }
+      },
+      "type": "note",
+      "title": "3rd Party sources on Client",
+      "body": "- Roboto Font\n- Material Icons\n- [GunDB](http://gun.js.org/)\n- [ReactJS](https://facebook.github.io/react/)\n- [Marked](https://github.com/chjj/marked) markdown parser\n",
+      "key": 20,
+      "id": 20
+    },
+    "RNp59UZDoo6DrzsBQKF9mF8s": {
+      "_": {
+        "#": "RNp59UZDoo6DrzsBQKF9mF8s",
+        ">": {
+          "type": 1493544101568.375,
+          "title": 1493547666557.615,
+          "body": 1493547873625.5,
+          "key": 1493544101568.375,
+          "id": 1493544101568.375
+        }
+      },
+      "type": "note",
+      "title": "3rd Party Sources on Server",
+      "body": "- [Node](https://nodejs.org/)\n- [Express](https://expressjs.com/)\n- [Pug](https://pugjs.org/)\n- [GunDB](http://gun.js.org/)\n",
+      "key": 21,
+      "id": 21
+    },
+    "07R1H6uPbvbMq09smIcsE4HL": {
+      "_": {
+        "#": "07R1H6uPbvbMq09smIcsE4HL",
+        ">": {
+          "type": 1493544335543.635,
+          "title": 1493548069479.38,
+          "body": 1493548188734.095,
+          "key": 1493544335543.635,
+          "id": 1493544335543.635
+        }
+      },
+      "type": "note",
+      "title": "A little more information...",
+      "body": "- All stylesheets are in SCSS\n- All React Components are classes written in JS\n- Flexboxes everywhere\n",
+      "key": 25,
+      "id": 25
+    },
+    "MnUABSta2ezz7c2PypDEZbzz": {
+      "_": {
+        "#": "MnUABSta2ezz7c2PypDEZbzz",
+        ">": {
+          "type": 1493544345948.86,
+          "title": 1493544385764.325,
+          "body": 1493570216406.27,
+          "key": 1493544345948.86,
+          "id": 1493544345948.86
+        }
+      },
+      "type": "note",
+      "title": "Note with only a title",
+      "body": "",
+      "key": 26,
+      "id": 26
+    }
+  }
+}

@@ -1,0 +1,151 @@
+$c_primary: #3f51b5;
+$c_border: #dfe2e5;
+$c_quote: #6a737d;
+$c_code: rgba(27,31,35,0.05);
+
+.markdown-input {
+
+  a {
+    color: $c_primary;
+  }
+
+  .markdown-view {
+  	word-wrap: break-word;
+  	max-height: 30vh;
+  	overflow-y: auto;
+  	width: 100%;
+  	border: 1px;
+  	padding: 2px;
+  }
+
+  textarea {
+  	//font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 85%;
+  	//font-size: 1em;
+  	word-wrap: break-word;
+  	width: 100%;
+  	min-height: 30vh;
+  	max-height: 70vh;
+  }
+
+  .info {
+  	position: absolute;
+    bottom: 0;
+    left: 24px;
+    font-size: large;
+  }
+}
+
+.markdown-view {
+  * {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+
+  a {
+    color: $c_primary;
+    pointer-events: auto;
+  }
+
+  p, blockquote, ul, ol, dl, pre, table {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    //width: 100%;
+  }
+
+  ul {
+    padding-left: 1em;
+  }
+
+  .check-box {
+    input[type='checkbox'] {
+      margin-left: -1.5em;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-top: 0;
+    border-spacing: 0;
+    margin-bottom: 16px;
+  }
+
+  thead {
+    vertical-align: middle;
+  }
+
+  td, th {
+    display: table-cell;
+    border: 1px solid $c_border;
+    padding: 6px 13px;
+  }
+
+  code {
+    padding: 0.2em 0;
+    background-color: $c_code;
+    font-size: 85%;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  }
+
+  li.check-box {
+    list-style: none;
+  }
+
+  blockquote {
+    padding: 0 1em;
+    color: $c_quote;
+    margin: 0 0 16px 0;
+    padding: 0 16px;
+    border-left: 4px solid $c_border;
+
+    p {
+      margin: 0;
+    }
+
+    &:after {
+      content: none;
+    }
+    &:before {
+      content: none;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    vertical-align: baseline;
+  }
+}
+
+.markdown-view-container {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  border: 1px solid $c_border;
+
+  .markdown-view {
+    padding: 10px;
+    max-height: 10vh;
+    overflow: hidden;
+    transition: all 370ms ease-in-out;
+
+    &.expand {
+      max-height: 200vh;
+      //overflow-y: auto;
+    }
+  }
+
+
+
+  .button {
+    text-align: center;
+    background-color: $c_border;
+    padding: 10px;
+    cursor: pointer;
+  }
+}
