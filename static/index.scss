@@ -26,7 +26,6 @@ body {
 		margin: 50px auto;
 		display: flex;
 		background-color: $c_default_content_background;
-		color: $c_text;
 		min-width: 50vw;
 
 		.textEntry {
@@ -68,7 +67,6 @@ body {
 	flex-direction: column;
 	background-color: $c_default_content_background;
 	margin: 10px;
-	color: $c_text;
 
 	overflow: hidden;
 
@@ -84,6 +82,7 @@ body {
 }
 
 .Note, .CreateNoteBar {
+	color: $c_text;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1), transform 250ms ease-in-out;
 

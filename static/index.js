@@ -50,8 +50,8 @@ class NoteBar extends Note {
 			React.createElement('div', {
 				className: 'textEntry',
 				onClick: _ => this.setState(this.open)
-			}, 'Take a note...'),
-			React.createElement(Button, { icon: 'attachment'})
+			}, 'Take a note...')/*,
+			React.createElement(Button, { icon: 'attachment'})*/
 		);
 	}
 

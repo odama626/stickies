@@ -73,10 +73,9 @@ class Button extends React.Component {
 
 class NoteToolbar extends React.Component {
 
-	componentDidMount() {
-		let colorButton = document.querySelector('i[name="color"]');
+	createJsColorElement(attachment) {
 		let jsContainer = document.createElement('div');
-		colorButton.parentElement.appendChild(jsContainer);
+
 		jsContainer.style.opacity = 0;
 		let jsc = new jscolor(jsContainer);
 		jsc.backgroundColor = 'transparent';
@@ -84,9 +83,17 @@ class NoteToolbar extends React.Component {
 		jsc.height = 100;
 		jsc.shadow = false;
 		jsc.borderWidth = 0;
-		jsc.fromString(this.props.color);
+		jsc.fromString(this.props.color || '#fff');
 		jsc.onFineChange = color => this.props.action({change: jsc.toHEXString()}, 'jscolor')
-		colorButton.addEventListener('click', jsc.show);
+		attachment.parentElement.appendChild(jsContainer);
+		attachment.addEventListener('click', jsc.show);
+		return jsContainer;
+	}
+
+	componentDidMount() {
+		let colorButton = document.querySelector('i[name="color"]');
+		this.createJsColorElement(colorButton);
+
 	}
 
 	render() {

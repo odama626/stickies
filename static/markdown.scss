@@ -59,13 +59,13 @@ $c_code: rgba(27,31,35,0.05);
     //width: 100%;
   }
 
-  ul {
+  ul, ol {
     padding-left: 1em;
   }
 
   .check-box {
     input[type='checkbox'] {
-      margin-left: -1.5em;
+      margin-left: -1.55em;
     }
   }
   .check-box.slick {
@@ -75,17 +75,20 @@ $c_code: rgba(27,31,35,0.05);
       height: 0;
 
       &:before {
+        border-radius: 2px;
         border: 2px solid;
-
-        width: 10px;
-        height: 10px;
+        content: '';
+        width: 8px;
+        height: 8px;
         margin-top: -0.6em;
         position: absolute;
+        font-size: 1.5em;
       }
       &:checked:before {
         content: '\2713';
-        line-height: 0.4em;
-        font-size: 1.5em;
+
+        line-height: 4px;
+
       }
     }
   }
@@ -160,8 +163,6 @@ $c_code: rgba(27,31,35,0.05);
       //overflow-y: auto;
     }
   }
-
-
 
   .button {
     text-align: center;
