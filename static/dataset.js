@@ -1,9 +1,4 @@
-var url = 'wss://73.32.82.8:9000/gun';
-if (window.location.href.includes('10.0.0.100')) {
-	url = 'wss://10.0.0.100:9000/gun'
-}
-
-var gun = Gun(url);
+var gun = Gun('wss://notes.exceptionallyrecursive.com/gun');
 var notes = gun.get('random/stuff');
 
 dataset = {};

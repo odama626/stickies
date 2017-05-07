@@ -1,4 +1,4 @@
-var myUrl = 'exceptionallyrecursive.com';
+var myUrl = 'notes.exceptionallyrecursive.com';
 
 
 var fs = require('fs');
