@@ -15,6 +15,7 @@ gun.get('nextKey', (val, id) => {
 
 dataset.AddNote = (note) => {
 		note.id = note.key = dataset.nextId++;
+		note.color = note.color || null;
 		notes.put({[note.key]: note});
 		gun.get('nextKey').put({ nextKey: dataset.nextId});
 }
