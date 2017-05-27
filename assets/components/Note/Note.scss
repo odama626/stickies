@@ -1,0 +1,87 @@
+@import '../../scss/global.scss';
+
+@media only screen and (max-device-width: 499px) {
+  .container {
+    min-width: 40vw;
+		max-width: 90vw;
+		width: auto;
+  }
+}
+
+.container {
+  flex-shrink: 1;
+  width: 250px;
+
+  .content {
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 200px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: $c_default_content_background;
+    margin: $gap;
+
+    color: $c_text;
+    overflow: hidden;
+    @include boxShadow;
+
+    .contentContainer {
+      flex-grow: 2;
+      overflow: hidden;
+
+      .title, .body {
+        pointer-events: none;
+        outline: none;
+        border: none;
+        word-wrap: break-word;
+        overflow: hidden;
+        user-select: none;
+      }
+
+      .title {
+        padding: 10px 10px 5px 10px;
+        font-weight: bold;
+      }
+      .body {
+        word-wrap: break-word;
+        flex-grow: 2;
+        padding: 5px 10px 10px 10px;;
+      }
+    }
+
+    
+    &.open {
+      overflow: visible;
+      position: fixed;
+      max-height: 80%;
+      left: 0;
+      top: 0;
+      margin: auto;
+      transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+      padding: 10px;
+      z-index: 1;
+      @include boxShadow-open;
+
+      .contentContainer {
+        overflow: auto;
+
+        .title, .body {
+          pointer-events: auto;
+          user-select: auto;
+          overflow-y: auto;
+          white-space: pre-wrap;
+          &:empty:not(:focus):before {
+            content:attr(data-placeholder);
+            color: $c_text_hint;
+          }
+        }
+        .body {
+          margin-top: 10px;
+        }
+      }
+
+      
+    } // end .open 
+  }
+}

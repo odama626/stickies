@@ -1,0 +1,30 @@
+
+export interface Container {
+	id: number;
+	key: number;
+}
+
+export class Dataset {
+	private gun: any;
+	private nextId: number;
+	private containers: any;
+	private subSection: any;
+
+	constructor(location: string) {
+		this.gun = Gun('wss://notes.exceptionallyrecursive.com/gun');
+		this.subSection = gun.get(location);
+
+		gun.get('nextKey', (val, id) => this.nextId = val.put? val.put.nextKey : 0);
+	}
+
+	insert(container: any): void {
+		let c = container;
+		c.id = c.key = this.nextId++;
+		this.containers.put({[c.key]: c});
+		gun.get('nextKey').put({ nextKey: this.nextId});
+	}
+
+	update(key: number, changes: { [key: string]: any}):void {
+		this.containers.put({[key]: changes});
+	}
+}

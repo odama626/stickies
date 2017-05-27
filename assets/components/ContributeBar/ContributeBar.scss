@@ -1,0 +1,52 @@
+@import '../../scss/global.scss';
+
+@media only screen and (max-device-width: 650px) {
+  .container {
+    min-width: 90vw;
+  }
+}
+
+.container {
+  margin: 50px auto;
+  display: flex;
+  background-color: $c_default_content_background;
+  min-width: 50vw;
+  color: $c_text;
+	@include boxShadow;
+
+  &.open {
+    box-shadow: $shadow_card !important;
+  }
+}
+
+.placeholderText {
+  color: $c_text_hint;
+  padding: 10px;
+  outline: none;
+  border: none;
+  flex-grow: 2;
+}
+
+.wide {
+	width: 100%;
+}
+
+.typeFlow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: $c_background;
+
+  .componentContainer {
+    position: relative;   
+
+    .componentTitle {
+      margin: $gap;
+      bottom: 0;
+      left: 0;
+      box-shadow: $shadow_card;
+      padding: $gap;
+      background-color: $c_primary;
+    }
+  }
+}

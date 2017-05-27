@@ -3,13 +3,13 @@ $c_border: #dfe2e5;
 $c_quote: #6a737d;
 $c_code: rgba(27,31,35,0.05);
 
-.markdown-input {
+.input {
 
   a {
     color: $c_primary;
   }
 
-  .markdown-view {
+  .view {
   	word-wrap: break-word;
   	max-height: 30vh;
   	overflow-y: auto;
@@ -37,7 +37,7 @@ $c_code: rgba(27,31,35,0.05);
   }
 }
 
-.markdown-view {
+.view {
   * {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     box-sizing: border-box;
@@ -63,32 +63,30 @@ $c_code: rgba(27,31,35,0.05);
     padding-left: 1em;
   }
 
-  .check-box {
+  .checkBox {
     input[type='checkbox'] {
       margin-left: -1.55em;
     }
-  }
-  .check-box.slick {
 
-    input[type='checkbox'] {
-      opacity: 0.5;
-      height: 0;
+    &.slick {
+      input[type='checkbox'] {
+        opacity: 0.5;
+        height: 0;
 
-      &:before {
-        border-radius: 2px;
-        border: 2px solid;
-        content: '';
-        width: 8px;
-        height: 8px;
-        margin-top: -0.6em;
-        position: absolute;
-        font-size: 1.5em;
-      }
-      &:checked:before {
-        content: '\2713';
-
-        line-height: 4px;
-
+        &:before {
+          border-radius: 2px;
+          border: 2px solid;
+          content: '';
+          width: 8px;
+          height: 8px;
+          margin-top: -0.6em;
+          position: absolute;
+          font-size: 1.5em;
+        }
+        &:checked:before {
+          content: '\2713';
+          line-height: 4px;
+        }
       }
     }
   }
@@ -117,7 +115,7 @@ $c_code: rgba(27,31,35,0.05);
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   }
 
-  li.check-box {
+  li.checkBox {
     list-style: none;
   }
 
@@ -143,31 +141,5 @@ $c_code: rgba(27,31,35,0.05);
   img {
     max-width: 100%;
     vertical-align: baseline;
-  }
-}
-
-.markdown-view-container {
-  display: flex;
-  flex-direction: column;
-  margin: 8px;
-  border: 1px solid $c_border;
-
-  .markdown-view {
-    padding: 10px;
-    max-height: 10vh;
-    overflow: hidden;
-    transition: all 370ms ease-in-out;
-
-    &.expand {
-      max-height: 200vh;
-      //overflow-y: auto;
-    }
-  }
-
-  .button {
-    text-align: center;
-    background-color: $c_border;
-    padding: 10px;
-    cursor: pointer;
   }
 }

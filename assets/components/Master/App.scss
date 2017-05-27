@@ -1,0 +1,17 @@
+
+.container {
+  margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+}
+
+.content {
+  display: flex;
+	flex-wrap: wrap-reverse;
+	min-width: 100px;
+	min-height: 100px;
+
+	align-items: flex-end;
+	justify-content: center;
+}

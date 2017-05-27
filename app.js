@@ -8,10 +8,8 @@ var gun = require('gun');
 var port = 9000;
 var app = express();
 
-
 app.use(compression());
-app.use(express.static('static'));
-
+app.use(express.static('dist'));
 
 app.set('view engine', 'pug');
 

@@ -4,15 +4,40 @@
   "description": "Opensource sticky notes",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:front": "webpack --config webpack.config.dev.js -w",
+    "dev:back": "NODE_ENV=dev node app.js",
+    "release": "node app.js"
   },
   "author": "Adam Sparks",
   "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^15.0.24",
+    "@types/react-dom": "^15.5.0",
+    "autoprefixer": "^7.1.1",
+    "awesome-typescript-loader": "^3.1.3",
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.3",
+    "prop-types": "^15.5.10",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "typed-css-modules-loader": "0.0.9",
+    "typescript": "^2.3.2",
+    "webpack": "^2.5.1"
+  },
   "dependencies": {
     "compression": "^1.6.2",
     "express": "^4.15.2",
     "gun": "^0.7.4",
     "gun-server": "^1.0.0",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "marked": "^0.3.6",
+    "react": "^15.5.4",
+    "react-color": "^2.11.7",
+    "react-dom": "^15.5.4"
   }
 }

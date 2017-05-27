@@ -1,0 +1,18 @@
+import * as React from 'react';
+import { Dataset } from './Dataset';
+
+export class BaseContainer extends React.Component {
+	private static dataset: Dataset
+
+	constructor(props) {
+		super(props);
+		if (!dataset) {
+			dataset = new Dataset('random/stuff');
+		}
+	}
+
+	update(key: number, state: { [key: string]: any}): void {
+		this.setState(state);
+		datset.update({[key]: state});
+	}
+}
