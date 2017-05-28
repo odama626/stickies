@@ -72,6 +72,7 @@ $c_code: rgba(27,31,35,0.05);
       input[type='checkbox'] {
         opacity: 0.5;
         height: 0;
+        position: relative;
 
         &:before {
           border-radius: 2px;

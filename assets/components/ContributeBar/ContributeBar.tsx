@@ -28,7 +28,7 @@ export class ContributeBar extends React.Component<Props,State>  {
 		let list: any[] = [];
 		for (; i<keys.length; i++) {
 			list.push(
-				React.createElement('div', { className: style.componentContainer},
+				React.createElement('div', { className: style.componentContainer, key: keys[i]},
 					React.createElement('div', { className: style.componentTitle, title: keys[i]}, keys[i]),
 					React.createElement(this.props.componentTypes[keys[i]])
 			));

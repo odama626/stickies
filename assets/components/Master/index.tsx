@@ -16,17 +16,19 @@ class MasterContainer extends React.Component<{ componentTypes: any}, {}> {
 	}
 	
 	createComponent(data: any): any {
-		if ( !data.key ) { data.key = 1}
 		data.type = data.type[0].toUpperCase() + data.type.slice(1);
 		return React.createElement(this.props.componentTypes[data.type], data);
 	}
 
 	render() {
-		let containers = [];
-		let data = Object.keys(Dataset.notes);
-		let i = 0;
-		for (; i < data.length; i++) {
-			containers.push(this.createComponent(Dataset.notes[data[i]]));
+		let containers: any = [];
+		if (Dataset.items) {
+			
+			let data = Object.keys(Dataset.items);
+			let i = 0;
+			for (; i < data.length; i++) {
+				containers.push(this.createComponent(Dataset.items[data[i]]));
+			}
 		}
 		return React.createElement('div', { className: style.content},
 			containers
@@ -58,5 +60,6 @@ function render() {
 
 
 window.onload = _ => {
+	render();
 	Dataset.registerCallbackFunction(render);
 }

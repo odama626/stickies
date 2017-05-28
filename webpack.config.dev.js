@@ -19,6 +19,7 @@ module.exports = {
 			'react',
 			'react-dom',
       'marked',
+      'gun'
 		]
 	},
 
@@ -29,12 +30,12 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		chunkFilename: '[chunkhash].js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve('dist')
 	},
 
 	module: {
 		rules: [{
-      test: /\.ts(x?)$/, exclude: /node_modules/,
+      test: /\.ts(x?)$/, exclude: [/node_modules/, /dist/],
         use: [ {
             loader: 'babel-loader', options: babelOptions
           }, {

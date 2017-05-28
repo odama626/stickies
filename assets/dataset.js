@@ -1,20 +1,26 @@
-export var gun = Gun('wss://notes.exceptionallyrecursive.com/gun');
-var entry = gun.get('random/stuff');
-export var nextId = 0;
-export var notes = {};
-export var Types = {};
+import * as gun from 'gun';
+
+var gun = Gun('wss://notes.exceptionallyrecursive.com/gun');
+
+var nextId = 0;
+export var items = {};
+
+let path = window.location.pathname.split('/').filter((value) => value.length>0);
+let i = 0, l = path.length;
+
+for (i; i < l; i++) {
+	gun = gun.get(path[i]);
+}
+
+var entry = gun.get(':items');
 
 export var updateCallback = () => {};
 
-function update(note, id) {
-	if (note && typeof note !== 'undefined') {
-		notes[id] = note;
-		updateCallback(note);
+function update(item, id) {
+	if (item && typeof item !== 'undefined') {
+		items[id] = item;
+		updateCallback(item);
 	}
-}
-
-export function RegisterType(type) {
-	Types[type.getClassName()] = type;
 }
 
 export function registerCallbackFunction(func) {
@@ -23,7 +29,7 @@ export function registerCallbackFunction(func) {
 
 entry.map().on(update);
 
-gun.get('nextKey', (val, id) => {
+gun.get(':nextKey', (val, id) => {
 	if (val.put) {
 		nextId = val.put.nextKey;
 	} else {
@@ -31,14 +37,14 @@ gun.get('nextKey', (val, id) => {
 	}
 });
 
-export function CreateComponent(creator, note) {
-		note.id = note.key = nextId++;
-		note.color = note.color || null;
-		console.log(creator, creator.toString());
-		note.type = creator;
-		
-		entry.put({[note.key]: note});
-		gun.get('nextKey').put({ nextKey: nextId});
+export function CreateComponent(creator, item) {
+	item.id = item.key = nextId++;
+	item.color = item.color || null;
+	console.log(creator, item);
+	item.type = creator;
+	
+	entry.put({[item.key]: item});
+	gun.get(':nextKey').put({ nextKey: nextId});
 }
 
 export function UpdateComponent(key, changes) {
