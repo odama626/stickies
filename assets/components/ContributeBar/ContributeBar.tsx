@@ -43,12 +43,13 @@ export class ContributeBar extends React.Component<Props,State>  {
 	}
 
 	renderOpen(): JSX.Element {
+		let flowClasses = `${style.typeFlow} ${style.wide} ${this.state.open? '' : style.closed}`
 		return (
 			<div className={style.wide}>
 				<div>
 					{ this.renderClosed() }
 				</div>
-				<div onClick={ e => { e.stopPropagation(); e.preventDefault(); } } className={`${style.typeFlow} ${style.wide}`}>
+				<div onClick={ e => { e.stopPropagation(); e.preventDefault(); } } className={flowClasses}>
 					{ this.state.renderList }
 				</div>
 			</div>
@@ -58,7 +59,7 @@ export class ContributeBar extends React.Component<Props,State>  {
 	render(): JSX.Element {
 		return (
 			<div className={`${style.container} ${this.state.open? style.open : ''}`} onClick={ () => this.setState({ open: !this.state.open})}>
-			{ this.state.open? this.renderOpen() : this.renderClosed() }
+			{ this.renderOpen()  }
 			</div>
 		);
 	}

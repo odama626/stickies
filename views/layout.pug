@@ -8,15 +8,14 @@ html(lang='en')
 
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto")
+    link(rel="stylesheet", href="/landing.style.css")
 
-    script(src='/gun.js')
-    title Stickies
+    //script(src='/vendor.js')
+    script(src='/landing.js')
 
-  body
-    h1 Sticky.io is quite the collaborative place
-    p here, you can collaborate how you want.
-    p
-      a(href='/public') Publically
-    p
-      a(href='/private') Privately
-    p Or within your company
+    title=portal
+  body(style='padding: 20px;')
+    block main
+
+    div(style='padding: 20px;')
+      #NodeView

@@ -6,9 +6,17 @@
     $c_default_content_background: white;
     $c_text: rgba(0,0,0,.70);
     $c_text_hint: rgba(0, 0, 0, .40);
+    $c_text_hint_light: rgba( 255, 255, 255, .4);
 
-    $c_primary: lightblue;
+    $c_primary: #e7d8b1;
+    $c_secondary: #424153;
+    $c_secondary_clear: rgba(66, 65, 83, .4);
 
+    $c_1: #ffffff;
+    $c_2: #CCCCCC;
+    $c_3: #999999;
+    $c_4: #FF461A;
+    $c_5: #F9FC87;
 
   //@import sizes
     $gap: 10px;

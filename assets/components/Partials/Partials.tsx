@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as moment from 'moment';
 import { TwitterPicker } from 'react-color';
 
 import * as style from './Partials.scss';
@@ -11,9 +12,11 @@ interface IconButtonProps {
 	name?: string;
 	icon: string;
 	id?: string
+	alert?: boolean;
 }
 
 export class IconButton extends React.Component<IconButtonProps, {}> {
+	static getDefaultProps = { alert: false }
 
 	private onClick(event: any): void {
 		event.stopPropagation();
@@ -23,8 +26,9 @@ export class IconButton extends React.Component<IconButtonProps, {}> {
 	}
 
 	render(): JSX.Element {
+		let classModifier = this.props.alert? style.alert : '';
 		return (
-			<i id={this.props.id} onClick={this.onClick.bind(this)} className={`${style.iconButton} material-icons`} name={this.props.name}>
+			<i id={this.props.id} onClick={this.onClick.bind(this)} className={`${style.iconButton} ${classModifier} material-icons`} name={this.props.name}>
 				{this.props.icon}
 			</i>
 		)
@@ -33,41 +37,36 @@ export class IconButton extends React.Component<IconButtonProps, {}> {
 
 interface ToolbarProps {
 	onClick: (event: any, name: string) => void;
-	color?: string;
+	modified?: string;
+	open: boolean;
+	tags?: { [key: string]: number};
 }
 
 interface ToolbarState {
 	colorToggle: boolean;
+	tags: string[];
 }
-
-/* TODO darken toolbar by getting hsl of color and changing lightness, remove filter
-function rgbToHsl(r, g, b){
-    r /= 255, g /= 255, b /= 255;
-    var max = Math.max(r, g, b), min = Math.min(r, g, b);
-    var h, s, l = (max + min) / 2;
-
-    if(max == min){
-        h = s = 0; // achromatic
-    }else{
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max){
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-    }
-
-    return [h, s, l];
-}
-*/
 
 export class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
 
 	constructor(props: ToolbarProps) {
 		super(props);
-		this.state = { colorToggle: false }
+		this.state = { 
+			colorToggle: false,
+			tags: this.sortTags(this.props.tags)
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({ tags: this.sortTags(nextProps.tags)})
+	}
+
+	sortTags(tags: {[key: string]: number}): string[] {
+		if (typeof tags !== 'undefined') {
+			let tagsStr = Object.keys(tags);
+			return tagsStr.sort((a, b) => tags[b] - tags[a]);
+		}
+		return [];
 	}
 
 	changeColor(color: any): void {
@@ -79,16 +78,46 @@ export class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
 		this.setState({colorToggle: !this.state.colorToggle});
 	}
 
-	render(): JSX.Element {
+	renderOpen(): JSX.Element {
 		return (
 			<div className={style.toolbar} onClick={e => e.stopPropagation()}>
-				<IconButton onClick={this.props.onClick} name='close' icon='close' />
-				<IconButton id='color' onClick={this.toggleColor.bind(this)} name='color' icon='color_lens' />
-				{this.state.colorToggle?
-					<div className={style.colorPickerContainer}>
-						<TwitterPicker onChange={this.changeColor.bind(this)} triangle='top-right' />
-					</div>
-				: null}
+				<div className={style.right}>
+					{this.state.colorToggle?
+						<div className={style.colorPickerContainer}>
+							<TwitterPicker onChange={this.changeColor.bind(this)} triangle='top-right' />
+						</div>
+					: null}
+					<IconButton id='color' onClick={this.toggleColor.bind(this)} name='color' icon='color_lens' />
+					<IconButton onClick={this.props.onClick} name='close' icon='close' />
+				</div>
+				<div className={style.left}>
+					<IconButton id='delete' alert={true} onClick={this.props.onClick} name='delete' icon='delete' />
+					<div className={style.timestamp}>{moment(this.props.modified).fromNow()}</div>
+				</div>
+			</div>
+		)
+	}
+
+	renderClosed(): JSX.Element {
+
+		let tags: any[] = [];
+		for (let i=0; i< this.state.tags.length; i++) {
+			if (this.state.tags[i] !== '#') {
+				tags.push(React.createElement('span', { key: i, className: style.tag }, `#${this.state.tags[i]}`));
+			}
+		}
+
+		return (
+			<div className={style.tagContainer} >
+				{ tags }
+			</div>
+		)
+	}
+
+	render(): JSX.Element {
+		return (
+			<div>
+			{ this.props.open? this.renderOpen() : this.renderClosed()}
 			</div>
 		)
 	}

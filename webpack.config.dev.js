@@ -14,13 +14,15 @@ module.exports = {
   devtool: 'source-map',
 	cache: true,
 	entry: {
-		main: path.resolve(__dirname, 'assets/components/Master/index.tsx'),
-		vendor: [
+		main:    './assets/components/Master/index.tsx',
+    landing: './assets/components/NodeView/NodeView.tsx',
+	/*	vendor: [
 			'react',
 			'react-dom',
       'marked',
       'gun'
 		]
+    */
 	},
 
   resolve: {
@@ -29,8 +31,8 @@ module.exports = {
 
 	output: {
 		filename: '[name].js',
-		chunkFilename: '[chunkhash].js',
-		path: path.resolve('dist')
+		//chunkFilename: '[chunkhash].js',
+		path: path.resolve(__dirname, 'dist/')
 	},
 
 	module: {
@@ -43,14 +45,15 @@ module.exports = {
         } ]
       },
       { 
-  test: /\.s(c|a)ss$/, 
-  loader: ExtractTextPlugin.extract({
-    fallback: "style-loader",
-    loader: "css-loader?modules=true&importLoaders=true&localIdentName=[name]__[local]___[hash:base64:5]!typed-css-modules-loader!sass-loader",
-  }),
-}
+      test: /\.s(c|a)ss$/, exclude: [/node_modules/, /dist/],
+      loader: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        loader: "css-loader?modules=true&importLoaders=true&localIdentName=[name]__[local]___[hash:base64:5]!typed-css-modules-loader!sass-loader",
+      }),
+  }
     ]},
   plugins: [
-          new ExtractTextPlugin("style.css"),
+          new ExtractTextPlugin("[name].style.css"),
+         //new webpack.optimize.CommonsChunkPlugin({ async: true, minChunks: 2})
       ]
 };

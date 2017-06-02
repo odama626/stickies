@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Dataset from '../../dataset';
+import * as moment from 'moment';
 import { ContributeBar } from '../ContributeBar/ContributeBar';
 import * as ComponentTypes from './ComponentRegistry';
 
@@ -16,8 +17,26 @@ class MasterContainer extends React.Component<{ componentTypes: any}, {}> {
 	}
 	
 	createComponent(data: any): any {
-		data.type = data.type[0].toUpperCase() + data.type.slice(1);
-		return React.createElement(this.props.componentTypes[data.type], data);
+		//data.type = data.type[0].toUpperCase() + data.type.slice(1);
+		if (data && data.type) {
+			let timestamp = moment(data.modified).unix();
+			return React.createElement('div', { key: data.key/*, style: { order: timestamp}*/},
+							React.createElement(this.props.componentTypes[data.type], data)
+						);
+		}
+		return null;
+	}
+
+	sort(first: string, second: string, on: string): number {
+		let a = Dataset.items[first];
+		let b = Dataset.items[second];
+		if (!a || !b) {
+			return 0;
+		}
+		if (on === 'modified' || on === 'created') {
+			return moment(b[on]).diff(a[on]);
+		}
+		return 0;
 	}
 
 	render() {
@@ -26,6 +45,7 @@ class MasterContainer extends React.Component<{ componentTypes: any}, {}> {
 			
 			let data = Object.keys(Dataset.items);
 			let i = 0;
+			data.sort((a, b) => this.sort(a,b,'modified'));
 			for (; i < data.length; i++) {
 				containers.push(this.createComponent(Dataset.items[data[i]]));
 			}
@@ -57,7 +77,6 @@ class App extends React.Component<{},{}> {
 function render() {
 	ReactDOM.render(<App />, document.getElementById('app'));
 }
-
 
 window.onload = _ => {
 	render();

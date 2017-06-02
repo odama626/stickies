@@ -27,25 +27,28 @@ app.get('/', (req, res) => res.render('index.pug', {}));
 
 
 app.get('/private', (req, res) => {
-  res.render('private.pug');
-})
+  res.render('portal.pug', { portal: 'Private'});
+});
+
+app.get('/private/:space', (req, res) => {
+  res.render('portal.pug', { portal: 'Private', space: capitalize(req.params.space)});
+});
 
 app.get('/public', (req, res) => {
-  res.render('public.pug');
+  res.render('portal.pug', { portal: 'Public'});
 });
 
 app.get('/public/:space', (req, res) => {
-  res.render('space.pug', { title: capitalize(req.params.space) });
+  res.render('space.pug', { portal: 'Public', space: capitalize(req.params.space) });
 });
 
 app.get('/:company', (req, res) => {
-  res.render('company.pug');
+  res.render('portal.pug', { portal: capitalize(req.params.company)});
 });
 
 app.get('/:company/:space', (req, res) => {
-  res.render('space.pug');
+  res.render('space.pug', { portal: capitalize(req.params.company), space: capitalize(req.params.space)});
 });
 
-app.use(gun.serve);
 var server = https.createServer(cert, app).listen(port, _ => console.log(`listening on port ${port}`));
 gun({ file: 'data.json', web: server});

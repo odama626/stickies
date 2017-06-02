@@ -1,0 +1,25 @@
+@import '../../scss/global';
+
+.entry {
+  padding: .2em;
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+
+  &:invalid {
+    border-right: 5px solid $c_4;
+  }
+  &:after {
+    content: 'Blargh';
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 10;
+
+  }
+}
+
+.entry::after {
+  content: ' - damnit';
+}

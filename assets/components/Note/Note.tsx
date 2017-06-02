@@ -10,6 +10,8 @@ interface Props {
 	title?: string;
 	body?: string;
 	color?: string;
+	modified?: string;
+	tags?: { [key: string]: number };
 }
 
 interface State {
@@ -17,6 +19,7 @@ interface State {
 	title: string;
 	body: string;
 	color: string;
+	tags: { [key: string]: number };
 }
 
 export class Note extends Base<Props, State> {
@@ -33,6 +36,7 @@ export class Note extends Base<Props, State> {
 		state.title = this.props.title || '';
 		state.body = this.props.body || '';
 		state.color =this.props.color || '#fff';
+		state.tags = this.props.tags || {};
 		return state;
 	}
 
@@ -41,7 +45,8 @@ export class Note extends Base<Props, State> {
 		this.state = this.initialState();
 	}
 
-	onButtonAction(event: any, name: string): void {
+	onToolbarAction(event: any, name: string): void {
+		super.onToolbarAction(event, name);
 		switch(name) {
 			case 'color':
 				break;
@@ -50,11 +55,11 @@ export class Note extends Base<Props, State> {
 				break;
 			case 'close':
 				this.toggle();
-				this.setState({ open: !this.state.open});
+				//this.setState({ open: !this.state.open});
 				break;
 		};
 		if (!this.state.open) {
-			this.setState({ open: !this.state.open});
+			this.toggle();
 		}
 	}
 
@@ -67,11 +72,23 @@ export class Note extends Base<Props, State> {
 			}
 			this.createSelf('Note', data);
 		}
+		if (this.state.open) {
+			let tags = this.parseTags(this.state.title+' '+this.state.body);
+			if (JSON.stringify(this.state.tags) !== JSON.stringify(tags) && JSON.stringify(tags) !== JSON.stringify({})) {
+				console.log('current state',this.state.tags,'latest tag parse', tags);
+				this.setState({ tags: tags});
+				//this.setUnattendedState({ tags: tags});
+			}
+		}
 		this.setState({ open: !this.state.open});
 	}
 
 	updateText(state: any, text: string): void {
 		this.setSavableState({[state]: text});
+	}
+
+	componentWillReceiveProps(nextProps: any) {
+		this.setState(nextProps);
 	}
 
 	shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
@@ -89,10 +106,10 @@ export class Note extends Base<Props, State> {
 	}
 
 	render() {
-		return React.createElement('div', { className: style.container},
+		return React.createElement('div', {},
 			React.createElement('div', {
 				className: `${style.content} ${this.state.open? style.open : ''}`,
-				onClick: this.onButtonAction.bind(this),
+				onClick: this.onToolbarAction.bind(this),
 				style: {
 					backgroundColor: this.state.color
 				}
@@ -113,12 +130,12 @@ export class Note extends Base<Props, State> {
 						placeHolder: 'Take a note...',
 					})
 				),
-				this.state.open?
-					React.createElement(Toolbar, {
-						color: this.state.color,
-						onClick: (state, text) => this.onButtonAction(state, text)
-					})
-				: null
+				React.createElement(Toolbar, {
+					modified: this.props.modified,
+					open: this.state.open,
+					tags: this.state.tags,
+					onClick: (state, text) => this.onToolbarAction(state, text)
+				})
 		)
 		)
 	}
