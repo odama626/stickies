@@ -16,6 +16,7 @@ module.exports = {
 	entry: {
 		main:    './assets/components/Master/index.tsx',
     landing: './assets/components/NodeView/NodeView.tsx',
+    Go: './assets/dependencies/go-get.ts'
 	/*	vendor: [
 			'react',
 			'react-dom',

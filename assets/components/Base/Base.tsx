@@ -44,7 +44,7 @@ export class Base<P extends Props, S extends State> extends React.Component<P, S
     switch(name) {
       case 'delete':
         Dataset.UpdateComponent(this.props.id, null);
-        this.forceUpdate();
+      //  this.forceUpdate();
     }
   }
 

@@ -10,6 +10,7 @@ interface Props {
 	text: string;
 	placeHolder: string;
 	onChange?: (event: any) => void;
+	hideTags?: boolean;
 	className: string;
 }
 
@@ -43,6 +44,9 @@ export class Markdown extends React.Component<Props, State> {
 					 .replace(/<li><p>\[\s\]/g, `<li class="${style.checkBox} ${style.slick}"><p><input onclick="return false" type="checkbox">`)
 					 .replace(/<li><p>\[o\]/g, `<li class="${style.checkBox} ${style.slick}"><p><input checked onclick="return false" type="checkbox">`)
 	         .replace(/<li><p>\[x\]/g, `<li class="${style.checkBox} ${style.slick}"><p><input checked onclick="return false" type="checkbox">`);
+			if (this.props.hideTags) {
+				a = a.replace(/\#[\w\-]+/g, '');
+			}
 	    return a;
 		} else  {
 			return text;

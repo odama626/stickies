@@ -4,9 +4,6 @@ import { TwitterPicker } from 'react-color';
 
 import * as style from './Partials.scss';
 
-declare var window;
-declare var jscolor;
-
 interface IconButtonProps {
 	onClick?: (event: any, name: string) => void;
 	name?: string;
@@ -39,7 +36,7 @@ interface ToolbarProps {
 	onClick: (event: any, name: string) => void;
 	modified?: string;
 	open: boolean;
-	tags?: { [key: string]: number};
+	tags?: string;
 }
 
 interface ToolbarState {
@@ -48,17 +45,26 @@ interface ToolbarState {
 }
 
 export class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
-
+	public state: ToolbarState;
 	constructor(props: ToolbarProps) {
 		super(props);
 		this.state = { 
 			colorToggle: false,
-			tags: this.sortTags(this.props.tags)
+			tags: []
 		}
+		let tags = {};
+		try {
+			tags = JSON.parse(props.tags);
+		} catch( e) {}
+		this.state.tags = this.sortTags(tags);
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({ tags: this.sortTags(nextProps.tags)})
+		let tags = {};
+		try {
+			tags = JSON.parse(nextProps.tags);
+		} catch( e) {}
+		this.setState({tags: this.sortTags(tags)});
 	}
 
 	sortTags(tags: {[key: string]: number}): string[] {

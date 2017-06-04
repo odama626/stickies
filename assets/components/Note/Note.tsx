@@ -11,7 +11,7 @@ interface Props {
 	body?: string;
 	color?: string;
 	modified?: string;
-	tags?: { [key: string]: number };
+	tags?: string;
 }
 
 interface State {
@@ -19,7 +19,7 @@ interface State {
 	title: string;
 	body: string;
 	color: string;
-	tags: { [key: string]: number };
+	tags: string;
 }
 
 export class Note extends Base<Props, State> {
@@ -73,11 +73,10 @@ export class Note extends Base<Props, State> {
 			this.createSelf('Note', data);
 		}
 		if (this.state.open) {
-			let tags = this.parseTags(this.state.title+' '+this.state.body);
-			if (JSON.stringify(this.state.tags) !== JSON.stringify(tags) && JSON.stringify(tags) !== JSON.stringify({})) {
-				console.log('current state',this.state.tags,'latest tag parse', tags);
+			let tags = JSON.stringify(this.parseTags(this.state.title+' '+this.state.body));
+			if (this.state.tags !== tags) {
 				this.setState({ tags: tags});
-				//this.setUnattendedState({ tags: tags});
+				this.setUnattendedState({ tags: tags});
 			}
 		}
 		this.setState({ open: !this.state.open});
@@ -117,6 +116,7 @@ export class Note extends Base<Props, State> {
 				React.createElement('div', { className: style.contentContainer },
 					React.createElement(Markdown, {
 						edit: this.state.open,
+						hideTags: true,
 						className: style.title,
 						text: this.state.title,
 						onChange: text => this.updateText('title', text),
@@ -124,6 +124,7 @@ export class Note extends Base<Props, State> {
 					}),
 					React.createElement(Markdown, {
 						edit: this.state.open,
+						hideTags: true,
 						className: style.body,
 						text: this.state.body,
 						onChange: text => this.updateText('body', text),

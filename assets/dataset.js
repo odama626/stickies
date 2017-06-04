@@ -1,4 +1,4 @@
-import * as gun from 'gun';
+import * as Gun from 'gun/gun';
 import * as moment from 'moment';
 
 var gun = Gun('wss://notes.exceptionallyrecursive.com/gun');
@@ -22,25 +22,6 @@ function update(item, id) {
 	if (debug) console.log('GET', id, item);
 	if (typeof item !== 'undefined' && (item !== null || typeof items[id] !== 'undefined')) {
 		items[id] = item;
-		
-  //Custom implementation of Synchronous..... which only sometimes works
-		/*let nested = Object.keys(item).filter(key => typeof item[key]['#'] !== 'undefined' && item[key]['#'] && key !== '_');
-		if (nested && nested.length > 0) {
-			
-			nested.forEach(key => {
-				entry.get(id).get(key).map().on((nestedItem, nestedId) => {						
-					items[id][key][nestedId] = nestedItem;
-						//item = items[id];
-					//console.log(items[id][key]);
-					
-					//console.log(item, id));
-				});
-			});
-			//delete items[id][key]['#'];
-			updateCallback(item);
-		} else {
-			updateCallback(item);
-		}*/
 		updateCallback(item);
 	}
 }
@@ -50,6 +31,8 @@ export function registerCallbackFunction(func) {
 }
 
 entry.map().on(update);
+//entry.map().path('tags').on((a, b) => console.log(a, b));
+
 
 gun.get(':nextKey', (val, id) => {
 	if (val.put) {
