@@ -1,3 +1,1 @@
-## Sticky
-
-Modular collaboration
+# stickies

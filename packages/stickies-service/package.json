@@ -1,0 +1,47 @@
+{
+  "name": "stickies-service",
+  "version": "0.1.0",
+  "packageManager": "yarn@3.2.1",
+  "main": "lib/client/main.js",
+  "dependencies": {
+    "@jsonurl/jsonurl": "^1.1.6",
+    "@koa/cors": "^3.3.0",
+    "@koa/router": "^10.1.1",
+    "@prisma/client": "3.14.0",
+    "@types/koa__router": "^8.0.11",
+    "dotenv": "^16.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "socket.io": "^4.5.1",
+    "stickies-app": "workspace:^",
+    "wretch": "^1.7.10"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.187",
+    "@swc/jest": "^0.2.21",
+    "@types/jest": "^27.5.1",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/koa": "^2.13.4",
+    "@types/koa__cors": "^3.3.0",
+    "@types/node": "^17.0.23",
+    "chokidar": "^3.5.3",
+    "concurrently": "^7.1.0",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.15",
+    "prisma": "3.14.0",
+    "typescript": "^4.6.3"
+  },
+  "scripts": {
+    "dev": "concurrently \"yarn watch-compile\" \"yarn watch-dev\"",
+    "watch-client": "swc src/client -w --out-dir lib",
+    "watch-compile": "swc src -w --out-dir dist",
+    "watch-dev": "nodemon --watch \"dist/**/*\" -e js ./dist/main.js",
+    "build": "swc src -d dist",
+    "start": "NODE_ENV=production node dist/main.js",
+    "clean": "rm -rf dist",
+    "test": "jest --watchAll",
+    "package": "./build.js"
+  }
+}

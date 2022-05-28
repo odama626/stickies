@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Board {
+  id            String          @id @default(uuid())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  name          String
+  boardColors   BoardColor[]
+  tasks         Task[]
+  tags          Tag[]
+  tagsOnTasks   TagsOnTasks[]
+  usersOnBoards UsersOnBoards[]
+
+  @@map("boards")
+}
+
+model BoardColor {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  color     String
+  count     Int      @default(1)
+  boardId   String
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  @@map("board_colors")
+}
+
+model Task {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  createdBy   User          @relation(fields: [userId], references: [id])
+  userId      String
+  updatedAt   DateTime      @updatedAt
+  boardId     String
+  board       Board         @relation(fields: [boardId], references: [id])
+  title       String
+  content     String
+  color       String?
+  tagsOnTasks TagsOnTasks[]
+
+  @@map("tasks")
+}
+
+model Tag {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  boardId     String
+  board       Board         @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  name        String
+  description String?
+  color       String
+  tagsOnTasks TagsOnTasks[]
+
+  @@unique([name, boardId])
+  @@map("tags")
+}
+
+model TagsOnTasks {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  taskId    String
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  tagId     String
+  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  boardId   String
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  @@unique([tagId, taskId])
+  @@map("tags_tasks")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  email     String   @unique
+
+  usersOnBoards UsersOnBoards[]
+
+  // TODO: Think about making magic link its own model
+  magicLink String @unique
+  task      Task[]
+  @@map("users")
+}
+
+enum UserBoardPermission {
+  owner
+  editor
+  viewer
+}
+
+model UsersOnBoards {
+  id         String              @id @default(uuid())
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  userId     String
+  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  boardId    String
+  board      Board               @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  permission UserBoardPermission
+
+  @@unique([boardId, userId])
+  @@map("users_boards")
+}
